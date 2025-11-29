@@ -1,0 +1,27 @@
+# Core Data Science Libraries
+pandas>=1.5.0
+numpy>=1.23.0
+
+# Machine Learning
+scikit-learn>=1.2.0
+xgboost>=1.7.0
+lightgbm>=3.3.0
+joblib>=1.2.0
+
+# Explainable AI
+shap>=0.41.0
+
+# Visualization
+matplotlib>=3.6.0
+seaborn>=0.12.0
+plotly>=5.14.0
+
+# Web Application
+streamlit>=1.25.0
+
+# Statistical Analysis
+scipy>=1.10.0
+
+# Additional utilities
+python-dateutil>=2.8.0
+

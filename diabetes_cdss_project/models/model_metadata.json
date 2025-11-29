@@ -1,0 +1,22 @@
+{
+  "model_name": "LightGBM",
+  "model_type": "LGBMClassifier",
+  "features": [
+    "Age",
+    "BMI",
+    "BloodPressure",
+    "Glucose",
+    "DiabetesPedigreeFunction",
+    "Insulin",
+    "Pregnancies"
+  ],
+  "metrics": {
+    "accuracy": 0.7597402597402597,
+    "precision": 0.6268656716417911,
+    "recall": 0.7777777777777778,
+    "f1_score": 0.6942148760330579,
+    "roc_auc": 0.8300000000000001
+  },
+  "training_samples": 614,
+  "test_samples": 154
+}
