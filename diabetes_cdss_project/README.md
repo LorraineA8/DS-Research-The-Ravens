@@ -16,7 +16,7 @@ This project implements a machine learning-based CDSS that:
 diabetes_cdss_project/
 │
 ├── data/
-│   ├── pima_augmented_t2dm_uganda.csv          # Original dataset
+│   ├── health care diabetes.csv                # Original dataset
 │   └── cleaned_diabetes_dataset.csv            # Cleaned dataset (generated)
 │
 ├── notebooks/
@@ -33,15 +33,17 @@ diabetes_cdss_project/
 │   └── shap_feature_importance.json            # Feature importance
 │
 ├── streamlit_app/
-│   ├── app.py                                  # Main Streamlit app
-│   ├── utils.py                                # Utility functions
+│   ├── app.py                                  # Main Streamlit app (entry point)
+│   ├── utils.py                                # Utility functions (model loading, predictions, visualizations)
 │   ├── requirements.txt                        # Python dependencies
+│   ├── theme.css                               # Professional healthcare theme styling
 │   └── pages/
-│       ├── 1_Login.py                          # Login page
-│       ├── 2_Input_Form.py                     # Patient data input
-│       ├── 3_Risk_Dashboard.py                 # Risk visualization
-│       └── 4_SHAP_Explain.py                  # SHAP explanations
+│       ├── 1_Login.py                          # Login page (authentication)
+│       ├── 2_Input_Form.py                     # Patient data input form
+│       ├── 3_Risk_Dashboard.py                 # Risk visualization and recommendations
+│       └── 4_SHAP_Explain.py                  # SHAP explanations and interpretability
 │
+├── MoH-Logo.png                                # Ministry of Health logo
 └── README.md                                   # This file
 ```
 
@@ -133,28 +135,42 @@ Execute the notebooks in order to train models and generate required files:
 
 ### 2. Input Form
 - Enter patient clinical measurements:
-  - Age (years)
-  - BMI (Body Mass Index)
-  - Blood Pressure (diastolic, mm Hg)
-  - Fasting Glucose (mg/dL)
-  - Diabetes Pedigree Function (family history risk)
-  - Additional optional information
-- Click "Predict Diabetes Risk"
+  - **Required Fields:**
+    - Age (years, must be 18+)
+    - Gender (Male/Female)
+    - BMI (Body Mass Index)
+    - Blood Pressure (diastolic, mm Hg)
+    - Fasting Glucose (mg/dL)
+    - Diabetes Pedigree Function (family history risk)
+    - Pregnancies (for female patients)
+  - **Optional Fields:**
+    - Physical Activity Level (Low/Moderate/High)
+    - Diet Quality (Poor/Fair/Good/Excellent)
+    - Alcohol Use (None/Occasional/Regular/Heavy)
+    - Smoking Status (Non-smoker/Former smoker/Current smoker)
+    - Family History of Diabetes (Yes/No)
+- Click "Predict Diabetes Risk" button to generate prediction
 
 ### 3. Risk Dashboard
 - View comprehensive risk analysis:
-  - Risk score gauge chart
-  - Age bracket comparison
-  - Feature contributions
-  - Personalized recommendations
-  - Next steps based on risk level
+  - **Risk Score Gauge**: Visual representation of diabetes risk (0-100%)
+  - **Age Bracket Comparison**: Compare patient's risk with average for their age group
+  - **Feature Contributions**: See which factors most impact the prediction
+  - **Personalized Recommendations**: Tailored lifestyle and treatment advice based on:
+    - Risk level (Low/Medium/High)
+    - BMI status
+    - Glucose levels
+    - Blood pressure
+    - Age-specific guidance
+  - **Next Steps**: Actionable items based on risk assessment
 
 ### 4. SHAP Explanation
 - Understand why the model made the prediction:
-  - Feature contribution charts
-  - Natural language explanations
-  - Top contributing factors
-  - Detailed SHAP values
+  - **Feature Contribution Charts**: Visual bar charts showing how each feature affects the prediction
+  - **Natural Language Explanations**: Easy-to-understand text summaries of key factors
+  - **Top Contributing Factors**: Identification of the 3 most important risk factors
+  - **Detailed SHAP Values**: Exact numerical contributions of each feature
+  - **Counterfactual Explanations**: What-if scenarios showing how risk would change with different values
 
 ## 🔬 Feature Selection Methodology
 
@@ -172,6 +188,10 @@ Prioritizes features that are:
 - Blood Pressure (easy - standard BP cuff)
 - Glucose (moderate - portable glucose meter)
 - Diabetes Pedigree Function (easy - family history questionnaire)
+- Physical Activity (easy - patient questionnaire)
+- Diet Quality (easy - patient questionnaire)
+- Alcohol Use (easy - patient questionnaire)
+- Smoking (easy - patient questionnaire)
 
 ### 2. Statistical Methods
 - Correlation analysis with target variable
@@ -193,7 +213,7 @@ The system trains and compares 5 different models:
 4. **LightGBM** - Fast gradient boosting
 5. **Support Vector Machine (SVM)** - Kernel-based classifier
 
-The best model (based on ROC AUC) is selected and saved for deployment.
+The best model (based on ROC AUC) is selected and saved for deployment. The current best model is **XGBoost** with an ROC AUC of 96.78% and accuracy of 88.96%.
 
 ## 📈 Model Evaluation Metrics
 
@@ -242,14 +262,23 @@ The system uses SHAP (SHapley Additive exPlanations) to provide:
 
 ## 📝 Dataset Information
 
-- **Dataset**: Pima Augmented Type 2 Diabetes Uganda Dataset
+- **Dataset**: Health Care Diabetes Dataset
 - **Target**: Type 2 Diabetes (Binary: 0 = No Diabetes, 1 = Diabetes)
-- **Features**: Clinical measurements (Age, BMI, Glucose, Blood Pressure, etc.)
-- **Use Case**: Village health tool - all measurements are easy to obtain
+- **Features**: 
+  - Clinical measurements: Age, BMI, Blood Pressure, Glucose, Diabetes Pedigree Function
+  - Lifestyle factors: Physical Activity, Diet Quality, Alcohol Use, Smoking
+  - Demographics: Pregnancies (for female patients)
+- **Use Case**: Village health tool - all measurements are easy to obtain with basic medical equipment
 
 ## 👥 Team Information
 
 **Team Ravens** - Data Science Research Project
+
+| Name | Registration Number | Access Number | Role |
+|------|---------------------|---------------|------|
+| Lorraine Paula Arinaitwe | M23B38/004 | B20729 | Model training & Streamlit Integration (Notebook 2 & 4) |
+| Rugogamu Noela | S23B38/016 | B22775 | xAI & Fairness (Notebook 3) |
+| Ssendi Aloysious Malon | S23B38/002 | B21258 | Data Understanding and Cleaning (Notebook 1) |
 
 ## 📄 License
 
@@ -257,9 +286,10 @@ This project is for educational and research purposes.
 
 ## 🙏 Acknowledgments
 
-- Dataset: Pima Indians Diabetes Database (augmented)
-- Libraries: scikit-learn, XGBoost, LightGBM, SHAP, Streamlit
+- Dataset: Health Care Diabetes Dataset
+- Libraries: scikit-learn, XGBoost, LightGBM, SHAP, Streamlit, Plotly, Pandas, NumPy
 - Clinical guidance from healthcare professionals
+- Ministry of Health (MoH) for support and resources
 
 ## 📧 Contact
 
@@ -270,4 +300,18 @@ For questions or issues, please contact the project team.
 **Version**: 1.0  
 **Last Updated**: 2024  
 **Status**: Active Development
+
+---
+
+## 📊 Model Performance
+
+The deployed XGBoost model achieves the following performance metrics:
+
+- **Accuracy**: 88.96%
+- **Precision**: 83.64%
+- **Recall**: 85.19%
+- **F1-Score**: 84.40%
+- **ROC AUC**: 96.78%
+
+These metrics indicate strong predictive performance suitable for clinical decision support in village health settings.
 

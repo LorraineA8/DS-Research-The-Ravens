@@ -1,21 +1,23 @@
 {
-  "model_name": "LightGBM",
-  "model_type": "LGBMClassifier",
+  "model_name": "XGBoost",
+  "model_type": "XGBClassifier",
   "features": [
     "Age",
     "BMI",
     "BloodPressure",
     "Glucose",
     "DiabetesPedigreeFunction",
-    "Insulin",
-    "Pregnancies"
+    "PhysicalActivity",
+    "DietQuality",
+    "AlcoholUse",
+    "Smoking"
   ],
   "metrics": {
-    "accuracy": 0.7597402597402597,
-    "precision": 0.6268656716417911,
-    "recall": 0.7777777777777778,
-    "f1_score": 0.6942148760330579,
-    "roc_auc": 0.8300000000000001
+    "accuracy": 0.8896103896103896,
+    "precision": 0.8363636363636363,
+    "recall": 0.8518518518518519,
+    "f1_score": 0.8440366972477065,
+    "roc_auc": 0.9677777777777778
   },
   "training_samples": 614,
   "test_samples": 154
