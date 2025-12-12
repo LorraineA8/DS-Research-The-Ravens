@@ -8,7 +8,7 @@ A comprehensive Clinical Decision Support System for Type 2 Diabetes risk predic
 ##  Project Overview
 
 This project implements a machine learning-based CDSS that:
-- Predicts Type 2 Diabetes risk using easy-to-measure clinical variables
+- Predicts Type 2 Diabetes risk using easy to measure clinical variables
 - Provides explainable AI insights using SHAP values
 - Offers personalized recommendations for lifestyle changes and treatment
 - Designed specifically for village health workers with limited resources
