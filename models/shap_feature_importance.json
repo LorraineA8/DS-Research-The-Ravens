@@ -1,0 +1,24 @@
+{
+  "features": [
+    "Age",
+    "BMI",
+    "BloodPressure",
+    "Glucose",
+    "DiabetesPedigreeFunction",
+    "PhysicalActivity",
+    "DietQuality",
+    "AlcoholUse",
+    "Smoking"
+  ],
+  "importance_scores": [
+    1.4768198728561401,
+    0.9720979332923889,
+    0.8398430347442627,
+    0.7974976897239685,
+    0.7700855135917664,
+    0.5832368731498718,
+    0.48149341344833374,
+    0.3794872760772705,
+    0.29519718885421753
+  ]
+}
