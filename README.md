@@ -267,9 +267,9 @@ This project is for educational and research purposes.
 ##  Contact
 
 For questions or issues, please contact the project team.
-\nRugogamu Noela: rugogamunoela@gmail.com
-\nLorraine Arinaitwe Paula: lorrainearinaitwe@gmail.com
-\nSsendi Malon Aloysious: ssendimalon2013@gmail.com
+- Rugogamu Noela: rugogamunoela@gmail.com
+- Lorraine Arinaitwe Paula: lorrainearinaitwe@gmail.com
+- Ssendi Malon Aloysious: ssendimalon2013@gmail.com
 
 ---
 
